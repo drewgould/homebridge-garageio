@@ -12,21 +12,9 @@ module.exports = function (homebridge) {
     homebridge.registerPlatform("homebridge-garageio", "Garageio", GarageIOInterface, true);
 }
 
-// This seems to be the "id" of the official LiftMaster iOS app
-//var APP_ID = "eU97d99kMG4t3STJZO/Mu2wt69yTQwM0WXZA5oZ74/ascQ2xQrLD/yjeVhEQccBZ";
-
-// Headers needed for validation
-// var HEADERS = {
-//     "Content-Type": "application/json",
-//     "User-Agent": "Garageio/3.1.7 (com.garageio.ios; build:503; iOS 10.3.0) Alamofire/3.5.0",
-//     "BrandID": "2",
-//     "ApiVersion": "4.1",
-//     "Culture": "en",
-//     "MyQApplicationID": APP_ID
-// };
 var HEADERS = {
     "Content-Type": "application/x-www-form-urlencoded; charset=utf-8",
-    "User-Agent": "Garageio/3.1.7 (com.garageio.ios; build:503; iOS 10.3.0) Alamofire/3.5.0",
+    "User-Agent": "Garageio/3.1.13 (com.garageio.ios; build:543; iOS 12.1.1) Alamofire/4.5.1",
 };
 
 
@@ -277,7 +265,7 @@ GarageIOInterface.prototype.getDevice = function (callback) {
                             self.setService(accessory);
 
                             // Register new accessory in HomeKit
-                            self.api.registerPlatformAccessories("homebridge-garageio", "GarageIO", [accessory]);
+                            self.api.registerPlatformAccessories("homebridge-garageio", "Garageio", [accessory]);
 
                             // Store accessory in cache
                             self.accessories[thisDeviceID] = accessory;
