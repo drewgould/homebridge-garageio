@@ -6,7 +6,7 @@ Utilizes the APIs from the iOS mobile app to interface with Garageio to open and
 Add Garageio to your platforms array in homebirdge config.json
 "platforms": [
         {
-                "platform": "GarageIO",
+                "platform": "Garageio",
                 "username": "YOUR GARAGEIO USERNAME/EMAIL",
                 "password": "YOUR GARAGEIO PASSWORD"
         }
