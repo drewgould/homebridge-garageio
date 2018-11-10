@@ -9,7 +9,7 @@ module.exports = function (homebridge) {
     Characteristic = homebridge.hap.Characteristic;
     UUIDGen = homebridge.hap.uuid;
 
-    homebridge.registerPlatform("homebridge-garageio", "GarageIO", GarageIOInterface, true);
+    homebridge.registerPlatform("homebridge-garageio", "Garageio", GarageIOInterface, true);
 }
 
 // This seems to be the "id" of the official LiftMaster iOS app
