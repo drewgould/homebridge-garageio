@@ -20,7 +20,7 @@ var HEADERS = {
 
 function GarageIOInterface(log, config, api) {
     this.log = log;
-    this.config = config || { "platform": "GarageIO" };
+    this.config = config || { "platform": "Garageio" };
     this.username = this.config.username;
     this.password = this.config.password;
     this.openDuration = parseInt(this.config.openDuration, 10) || 15;
