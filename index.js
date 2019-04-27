@@ -228,6 +228,7 @@ GarageIOInterface.prototype.getDevice = function (callback) {
     }).then(function (data) {
         if (data.success == true) {
             var devices = data.data.devices;
+            self.log('Garageio devices:' + JSON.stringify(data.data.devices));
             // Look through the array of devices for all the doors
             for (var i = 0; i < devices.length; i++) {
                 var doors = devices[i].doors;
@@ -237,7 +238,7 @@ GarageIOInterface.prototype.getDevice = function (callback) {
                     var door = doors[i];
                     var thisDeviceID = door.id;
                     var thisSerial = "123" + i;
-                    var thisModel = "something";
+                    var thisModel = "Garageio Door";
                     var thisDoorName = door.name;
                     var thisDoorState = door.state;
                     var thisDoorMonitor = door.active;
@@ -245,11 +246,14 @@ GarageIOInterface.prototype.getDevice = function (callback) {
                     if (thisDoorMonitor == true) {
                         // Retrieve accessory from cache
                         var accessory = self.accessories[thisDeviceID];
-                    
+
                         // Initialization for new accessory
                         if (!accessory) {
                             // Setup accessory as GARAGE_DOOR_OPENER (4) category.
+                            self.log('Initializing Garageio door id' + thisDeviceID);
+                            self.log('Garageio door name' + thisDoorName);
                             var uuid = UUIDGen.generate(thisDeviceID);
+                            self.log('Door UUID' + uuid);
                             accessory = new Accessory("Garageio " + thisDoorName, uuid, 4);
 
                             // Setup HomeKit security system service
@@ -325,21 +329,21 @@ GarageIOInterface.prototype.setState = function (thisOpener, state, callback) {
     var thisAccessory = this.accessories[thisOpener.deviceID];
     var doorState = state === 1 ? "0" : "1";
     var updateDelay = state === 1 ? this.closeDuration : this.openDuration;
-    
+
     if (doorState == 0) {
         var doorStateGarageIO = "CLOSED";
     }
     else {
         var doorStateGarageIO = "OPEN";
     }
-    
+
     // Adding security token to headers
     var putHeaders = JSON.parse(JSON.stringify(HEADERS));
     putHeaders.SecurityToken = this.securityToken;
 
     // Querystring params
     var query = "auth_token=" + encodeURI(self.securityToken) + "&user_id=" + encodeURI(self.userID) + "&door_id=" + encodeURI(thisOpener.deviceID) + "&door_state=" + encodeURI(doorStateGarageIO);
-    
+
     // Send the state request to garageio
     fetch("https://garageio.com/api/controllers/v1/Toggle?" + query, {
         method: "POST",
