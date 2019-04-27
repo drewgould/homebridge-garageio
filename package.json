@@ -1,9 +1,16 @@
 {
   "name": "homebridge-garageio",
   "version": "1.0.0",
-  "private": true,
-  "main": "app.js",
+  "private": false,
+  "main": "index.js",
+  "author": "Andrew Gould <andrew.gould@me.com>",
+  "homepage": "https://github.com/drewgould/homebridge-garageio.git",
+  "bugs": "https://github.com/drewgould/homebridge-garageio/issues",
   "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/drewgould/homebridge-garageio.git"
+  },
   "keywords": [
     "homebridge-plugin"
   ],
@@ -18,7 +25,7 @@
     "express": "~4.14.1",
     "form-data": "^2.1.2",
     "jade": "~1.11.0",
-    "morgan": "~1.7.0",
+    "morgan": "~1.9.1",
     "node-fetch": "^1.6.3",
     "serve-favicon": "~2.3.2"
   }
