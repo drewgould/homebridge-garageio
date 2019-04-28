@@ -1,6 +1,6 @@
 {
   "name": "homebridge-garageio",
-  "version": "1.0.2",
+  "version": "1.0.2.1",
   "private": false,
   "main": "index.js",
   "author": "Andrew Gould <andrew.gould@me.com>",
